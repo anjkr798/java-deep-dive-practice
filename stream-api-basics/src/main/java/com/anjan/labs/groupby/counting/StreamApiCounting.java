@@ -3,6 +3,7 @@ package com.anjan.labs.groupby.counting;
 import com.anjan.labs.groupby.counting.dao.Employee;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -84,4 +85,19 @@ public class StreamApiCounting {
     }
 
 
+    /**
+     * Problem Statement: <br/>
+     * Given a list of strings, group them by their length and count how many strings exist for each length.
+     */
+    List<String> items = Arrays.asList("a", "bb", "cc", "ddd", "eeee", "ff");
+
+    public void groupingByDerivedCriteria(List<String> items) {
+
+        Map<Integer, Long> countByLength = items.stream().collect(Collectors.groupingBy(String::length, Collectors.counting()));
+        log.info(" === groupingByDerivedCriteria using Stream API : countByLength = {} === ", countByLength);
+
+        Map<Integer, List<String>> liistOfStringsBySize =
+                items.stream().collect(Collectors.groupingBy(String::length, Collectors.mapping(Function.identity(), Collectors.toList())));
+        log.info(" === groupingByDerivedCriteria using Stream API : liistOfStringsBySize = {} === ", liistOfStringsBySize);
+    }
 }
