@@ -14,7 +14,7 @@ public class StreamApiCountingTest {
 
     @Test
     public void basicFrequencyCountTest(){
-        log.info(" ======== basicFrequencyCountTest :: started ");
+        log.info(" ======== basicFrequencyCountTest :: started ======== ");
 
         List<String> listOfWords = Arrays.asList("apple", "banana", "apple", "cherry", "banana", "apple");
 
@@ -22,16 +22,16 @@ public class StreamApiCountingTest {
 
         StreamApiCounting streamApiCounting = new StreamApiCounting();
 
-        Map<String,Long> resultMap = streamApiCounting.basicFrequencyCount(listOfWords);
+        streamApiCounting.basicFrequencyCount(listOfWords);
 
-        log.info(" ======== basicFrequencyCountTest :: completed ");
+        log.info(" ======== basicFrequencyCountTest :: completed ======== ");
 
     }
 
     @Test
     public void groupObjectByPropertyTest(){
 
-        log.info(" ======== groupObjectByPropertyTest :: started ");
+        log.info(" ======== groupObjectByPropertyTest :: started ======== ");
 
         List<Employee> employees = Arrays.asList(
                 new Employee(101, "Alice", "HR", "10000"),
@@ -44,6 +44,20 @@ public class StreamApiCountingTest {
 
         streamApiCounting.groupObjectByProperty(employees);
 
-        log.info(" ======== groupObjectByPropertyTest :: completed ");
+        log.info(" ======== groupObjectByPropertyTest :: completed ======== ");
+    }
+
+    @Test
+    public void groupingByDerivedCriteriaTest(){
+
+        log.info(" ======== groupingByDerivedCriteriaTest :: started ======== ");
+
+        List<String> items = Arrays.asList("a", "bb", "cc", "ddd", "eeee", "ff");
+
+        StreamApiCounting streamApiCounting = new StreamApiCounting();
+
+        streamApiCounting.groupingByDerivedCriteria(items);
+
+        log.info(" ======== groupingByDerivedCriteriaTest :: completed ======== ");
     }
 }
